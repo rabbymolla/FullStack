@@ -3,6 +3,7 @@ const middleWere = (req, res, next) => {
   if (req.headers.authorization == "RaBBy544") {
     next();
   } else {
+    res.status(401);
     res.send({ error: "inviled" });
   }
 };
