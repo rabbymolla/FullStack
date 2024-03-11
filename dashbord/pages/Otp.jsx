@@ -1,9 +1,26 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Alert, Space } from "antd";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Otp = () => {
+  const params = useParams();
+  const naviget = useNavigate();
+
   const onFinish = async (values) => {
-    console.log("Success:", values);
+    console.log("Success:", values.otp);
+    const data = await axios.post(
+      "http://localhost:8000/api/v1/auth/otpverfic",
+      {
+        email: params.email,
+        otp: values.otp,
+      }
+    );
+    console.log("hhh", data);
+    setTimeout(() => {
+      naviget("/login");
+    }, 1500);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -29,12 +46,12 @@ const Otp = () => {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="Code"
+          name="otp"
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Please input your OTP!",
             },
           ]}
         >

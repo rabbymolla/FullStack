@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input, Alert, Space } from "antd";
+import { Button, Form, Input, Alert } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +27,7 @@ const Registration = () => {
     console.log("hhh", data);
     setMas("sucefull");
     setTimeout(() => {
-      naviget("/otp");
+      naviget(`/otp/${values.email}`);
     }, 1500);
   };
   const onFinishFailed = (errorInfo) => {
