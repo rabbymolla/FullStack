@@ -1,5 +1,5 @@
 const middleWere = (req, res, next) => {
-  console.log("ami", req.headers);
+  // console.log("ami", req.headers.authorization == "RaBBy544");
   if (req.headers.authorization == "RaBBy544") {
     next();
   } else {

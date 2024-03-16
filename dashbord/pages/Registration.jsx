@@ -26,9 +26,9 @@ const Registration = () => {
     );
     console.log("hhh", data);
     setMas("sucefull");
-    setTimeout(() => {
-      naviget(`/otp/${values.email}`);
-    }, 1500);
+    setLoding(false);
+
+    naviget(`/otp/${values.email}`);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

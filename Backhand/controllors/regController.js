@@ -5,6 +5,7 @@ const otpGenerator = require("otp-generator");
 
 const regController = async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(name, email, password);
   if (!name || !email || !password) {
     return res.send({ error: "Plese fill up the from" });
   }
@@ -34,12 +35,12 @@ const regController = async (req, res) => {
 
         auth: {
           user: "rabby16139@gmail.com",
-          pass: "wokz ipba uanh gnvd",
+          pass: "mmvj kbvt djna enqx",
         },
       });
 
       const info = await transporter.sendMail({
-        from: ` "Ecomarce"`, // sender address
+        from: `rabby16139@gmail.com`, // sender address
         to: email, // list of receivers
         subject: "This is your Verfication", // Subject line
         html: `Here is your <b>OTP:</b> ${otp} `, // html body
