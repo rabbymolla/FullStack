@@ -9,26 +9,32 @@ const Registration = () => {
   const naviget = useNavigate();
 
   const onFinish = async (values) => {
-    console.log("Success:", values);
     setLoding(true);
-    const data = await axios.post(
-      "http://localhost:8000/api/v1/auth/reg",
-      {
-        name: values.username,
-        email: values.email,
-        password: values.password,
-      },
-      {
-        headers: {
-          Authorization: "RaBBy544",
+    try {
+      const data = await axios.post(
+        "http://localhost:8000/api/v1/auth/reg",
+        {
+          name: values.username,
+          email: values.email,
+          password: values.password,
         },
-      }
-    );
-    console.log("hhh", data);
-    setMas("sucefull");
-    setLoding(false);
-
-    naviget(`/otp/${values.email}`);
+        {
+          headers: {
+            Authorization: "RaBBy544",
+          },
+        }
+      );
+      console.log("hhh", data);
+      setMas("sucefull");
+      setLoding(false);
+      setTimeout(() => {
+        naviget(`/otp/${values.email}`);
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+      setLoding(false);
+      setMas(error.response.data.error);
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
