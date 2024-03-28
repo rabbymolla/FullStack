@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Input, Alert } from "antd";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const [loading, setLoding] = useState(false);
@@ -112,6 +112,9 @@ const Registration = () => {
           >
             Submit
           </Button>
+          <Link style={{ marginLeft: "10px" }} to="/login">
+            Login
+          </Link>
         </Form.Item>
       </Form>
     </>

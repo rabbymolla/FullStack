@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Input, Alert } from "antd";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [loading, setLoding] = useState(false);
@@ -91,6 +91,9 @@ const Login = () => {
           >
             Login
           </Button>
+          <Link to="/forget" style={{ marginLeft: "10px" }}>
+            Forget Password
+          </Link>
         </Form.Item>
       </Form>
     </>

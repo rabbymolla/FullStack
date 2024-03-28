@@ -52,6 +52,9 @@ const regController = async (req, res) => {
           html: `<a href="http://localhost:5173/emaillink/${token}">Click Here:</a> `, // html body
         });
       });
+      setTimeout(async () => {
+        await User.findOneAndUpdate({ email: email }, { otp: "" });
+      }, 100000);
     });
   }
 };
